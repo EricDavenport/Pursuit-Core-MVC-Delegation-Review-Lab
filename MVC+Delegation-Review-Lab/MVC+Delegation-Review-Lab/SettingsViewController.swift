@@ -15,43 +15,65 @@ class SettingsViewController: UIViewController {
     @IBOutlet weak var stepperControl: UIStepper!
     @IBOutlet weak var fontSizeLabel: UILabel!
     
-    var currentFont: Double?
+    //var currentFont: CGFloat?
+    
+    var currentFloat: CGFloat?
+    
+    var currentFont = CGFloat() {
+        didSet {
+            fontSizeLabel.font = UIFont(name: "Helvetica", size: currentFloat ?? 17)
+//            stepperControl.value = Double(currentFloat!)
+//            sliderControl.value = Float(currentFloat!)
+        }
+    }
 
     
     var movie: Movie?
    
     override func viewDidLoad() {
         super.viewDidLoad()
-//        configureSlider()
-//        configureStepper()
+        configureSlider()
+        configureStepper()
+        sizeOfLabel()
     }
-//
-//    func configureStepper() {
-//        stepperControl.maximumValue = 32
-//        stepperControl.minimumValue = 4
-//        stepperControl.stepValue = 1
-//    }
-//    func configureSlider() {
-//        sliderControl.maximumValue = 32
-//        sliderControl.minimumValue = 4
-//
-//    }
+    func sizeOfLabel() {
+        fontSizeLabel.font = UIFont(name: "Helvetica", size: currentFloat ?? 17)
+    }
+
+    func configureStepper() {
+        stepperControl.maximumValue = 100
+        stepperControl.minimumValue = 1
+        stepperControl.stepValue = 1
+        stepperControl.value = Double(currentFloat!)
+    }
+    func configureSlider() {
+        sliderControl.maximumValue = 100
+        sliderControl.minimumValue = 1
+        sliderControl.value = Float(currentFloat!)
+
+    }
         
 
     @IBAction func sliderAction(_ sender: UISlider) {
         sliderControl.value = sender.value
-        sliderControl.value = Float(stepperControl.value)
-        currentFont = Double(sliderControl.value)
-        print(currentFont)
+        stepperControl.value = Double(sliderControl.value)
+        currentFont = CGFloat(sender.value)
+                    currentFloat = currentFont
+        print("Font: \(currentFont)")
+        print("Stepper:\(stepperControl.value)")
+        print("Stepper:\(sliderControl.value)")
     }
     
     
     
     @IBAction func stepperAction(_ sender: UIStepper) {
         stepperControl.value = sender.value
-        stepperControl.value = Double(sliderControl.value)
-        currentFont = Double(stepperControl.value)
-        print(currentFont)
+        sliderControl.value = Float(stepperControl.value)
+        currentFont = CGFloat(sender.value)
+                currentFloat = currentFont
+        print("Font: \(currentFont)")
+        print("Stepper:\(stepperControl.value)")
+        print("Stepper:\(sliderControl.value)")
     }
     
 

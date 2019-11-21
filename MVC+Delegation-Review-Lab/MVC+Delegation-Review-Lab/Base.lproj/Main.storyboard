@@ -97,6 +97,14 @@
                                     <action selector="stepperAction:" destination="qY0-y3-Sgn" eventType="valueChanged" id="7ti-DP-57u"/>
                                 </connections>
                             </stepper>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BB0-Zf-rzu">
+                                <rect key="frame" x="162" y="696" width="86" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Save Setting"/>
+                                <connections>
+                                    <segue destination="D0C-nE-miH" kind="unwind" unwindAction="unwindSegueWithSegue:" id="GuJ-E6-sQK"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
@@ -118,6 +126,7 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="EJq-F8-ezY" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <exit id="D0C-nE-miH" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="1946" y="127"/>
         </scene>
